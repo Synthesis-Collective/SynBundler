@@ -1,10 +1,11 @@
 using System;
-using System.Linq;
 using System.Threading.Tasks;
+
 using Mutagen.Bethesda;
-using Mutagen.Bethesda.Synthesis;
-using Mutagen.Bethesda.Skyrim;
 using Mutagen.Bethesda.FormKeys.SkyrimSE;
+using Mutagen.Bethesda.Skyrim;
+using Mutagen.Bethesda.Synthesis;
+
 using Noggog;
 
 namespace SynBundler
