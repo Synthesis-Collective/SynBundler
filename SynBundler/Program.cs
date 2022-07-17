@@ -41,7 +41,7 @@ namespace SynBundler
                         {
                             Item = new ContainerItem()
                             {
-                                Item = abt.AsLink(),
+                                Item = abt.ToLink(),
                                 Count = 10
                             }
                         }
@@ -54,7 +54,7 @@ namespace SynBundler
                         Data = new FunctionConditionData()
                         {
                             Function = Condition.Function.GetItemCount,
-                            ParameterOneRecord = abt.AsLink()
+                            ParameterOneRecord = abt.ToLink()
                         }
                     });
                     var unbundler = state.PatchMod.ConstructibleObjects.AddNew($"unbundle_{abt.EditorID}");
@@ -66,7 +66,7 @@ namespace SynBundler
                         {
                             Item = new ContainerItem()
                             {
-                                Item = miscitem.AsLink(),
+                                Item = miscitem.ToLink(),
                                 Count = 1
                             }
                         }
@@ -79,7 +79,7 @@ namespace SynBundler
                         Data = new FunctionConditionData()
                         {
                             Function = Condition.Function.GetItemCount,
-                            ParameterOneRecord = miscitem.AsLink()
+                            ParameterOneRecord = miscitem.ToLink()
                         }
                     });
                 }
