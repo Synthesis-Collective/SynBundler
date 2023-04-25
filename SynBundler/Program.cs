@@ -2,6 +2,8 @@ using System;
 using System.Threading.Tasks;
 
 using Mutagen.Bethesda;
+using Mutagen.Bethesda.Plugins;
+using Mutagen.Bethesda.Plugins.Records;
 using Mutagen.Bethesda.FormKeys.SkyrimSE;
 using Mutagen.Bethesda.Skyrim;
 using Mutagen.Bethesda.Synthesis;
@@ -46,16 +48,14 @@ namespace SynBundler
                             }
                         }
                     };
+                    var DataBundle = new GetItemCountConditionData();
+                    DataBundle.ItemOrList.Link.SetTo(abt.FormKey);
                     bundler.WorkbenchKeyword.SetTo(Skyrim.Keyword.CraftingTanningRack);
                     bundler.Conditions.Add(new ConditionFloat()
                     {
                         CompareOperator = CompareOperator.GreaterThanOrEqualTo,
                         ComparisonValue = 10,
-                        Data = new FunctionConditionData()
-                        {
-                            Function = Condition.Function.GetItemCount,
-                            ParameterOneRecord = abt.ToLink()
-                        }
+                        Data = DataBundle,
                     });
                     var unbundler = state.PatchMod.ConstructibleObjects.AddNew($"unbundle_{abt.EditorID}");
                     unbundler.CreatedObject.SetTo(abt);
@@ -71,16 +71,14 @@ namespace SynBundler
                             }
                         }
                     };
+                    var DataUnbundle = new GetItemCountConditionData();
+                    DataUnbundle.ItemOrList.Link.SetTo(abt.FormKey);
                     unbundler.WorkbenchKeyword.SetTo(Skyrim.Keyword.CraftingTanningRack);
                     unbundler.Conditions.Add(new ConditionFloat()
                     {
                         CompareOperator = CompareOperator.GreaterThanOrEqualTo,
                         ComparisonValue = 1,
-                        Data = new FunctionConditionData()
-                        {
-                            Function = Condition.Function.GetItemCount,
-                            ParameterOneRecord = miscitem.ToLink()
-                        }
+                        Data = DataUnbundle,
                     });
                 }
             });
